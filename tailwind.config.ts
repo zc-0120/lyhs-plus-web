@@ -14,9 +14,6 @@ export default {
       },
       height: {
         '1.5px': '1.5px',
-      },
-      spacing: {
-        'nav': '110px',
       }
     },
   },
