@@ -6,7 +6,7 @@ export default function JoinBeta(){
 
     return (
         <div>
-            <Input label="Email" type="email" variant="bordered" isClearable />
+            <Input label="Email" type="email" variant="bordered" isClearable></Input>
         </div>
     )
 }
