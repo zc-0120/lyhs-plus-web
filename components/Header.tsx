@@ -44,19 +44,19 @@ export default function Header(){
                 :
                 <>
                     <ul className='list-none p-0 ml-auto flex flex-row'>
-                        <li className='m-2 hover:border-b border-b-black'><Link href={'/'}>總覽</Link></li>
-                        <li className='m-2 hover:border-b border-b-black'><Link
+                        <li className='m-2 border-b border-transparent hover:border-b-black font-bold'><Link href={'/'}>總覽</Link></li>
+                        <li className='m-2 border-b border-transparent hover:border-b-black font-bold'><Link
                             href={'/join-beta'}>加入測試版</Link></li>
                     </ul>
                 </>
             }
             <AnimatePresence>
                 {menuOpen && isMobile &&
-                    <motion.div aria-label={'mobileMenu'} initial={{ opacity: 0, height: 0 }} exit={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "100dvh" }} transition={{ type: "spring", stiffness: 150, damping: 20 }} style={{ transformOrigin: "top" }}
+                    <motion.div aria-label={'mobileMenu'} initial={{ opacity: 0.2, height: 0 }} exit={{ opacity: 0.2, height: 0 }} animate={{ opacity: 1, height: "100dvh" }} transition={{ type: "spring", stiffness: 170, damping: 20 }} style={{ transformOrigin: "top" }}
                          className={'fixed left-0 bg-gray-100/85 flex-grow w-full m-menu p-4 box-border top-0 z-10 backdrop-blur overflow-auto'}>
                         <ul className={'mt-8'}>
-                            <motion.li className={'m-7 ml-3 text-4xl font-bold'} initial={{ opacity: 0, y: 30 }} exit={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y:0 }} transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.1, exit: { delay: 0 }}}><a href={'/'}>總覽</a></motion.li>
-                            <motion.li className={'m-7 ml-3 text-4xl font-bold'} initial={{ opacity: 0, y: 30 }} exit={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y:0 }} transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2, exit: { delay: 0 }}}><a href={'/join-beta'}>加入測試版</a></motion.li>
+                            <motion.li className={'m-7 ml-3 text-4xl font-bold'} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y:0 }} transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.1 }}><a href={'/'}>總覽</a></motion.li>
+                            <motion.li className={'m-7 ml-3 text-4xl font-bold'} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y:0 }} transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}><a href={'/join-beta'}>加入測試版</a></motion.li>
                         </ul>
                     </motion.div>
                 }

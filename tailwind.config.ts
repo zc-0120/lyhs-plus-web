@@ -16,7 +16,13 @@ export default {
       },
       height: {
         '1.5px': '1.5px',
-      }
+      },
+      boxShadow: {
+        'sharp': '3px 3px 0px rgba(0, 0, 0, 0.5)', // 自定义阴影，模糊值为0
+      },
+      screens: {
+        'xs': '380px',
+      },
     },
   },
   plugins: [nextui()],
