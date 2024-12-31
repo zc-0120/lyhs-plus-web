@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header(){
     const [isMobile, setIsMobile] = useState(false);
@@ -10,7 +10,7 @@ export default function Header(){
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 500) {
+            if (window.innerWidth < 800) {
                 setIsMobile(true);
             } else {
                 setIsMobile(false);
@@ -24,20 +24,20 @@ export default function Header(){
     }, []);
 
     return (
-        <header className='flex flex-row bg-white/85 items-center sticky p-4 pl-7 pr-7'>
+        <header className='flex flex-row bg-white/85 items-center sticky p-4 pl-7 pr-7 z-20'>
             <Image src='/text-logo.svg' width={70} height={100} alt='lyhs-plus-text-icon'/>
             {isMobile ?
                 <>
                     <button aria-label="Open menu"
-                            className="flex flex-col border border-gray-300 rounded-full justify-center items-center h-8 w-8 ml-auto m-0 hover:bg-gray-200 relative"
+                            className="flex flex-col justify-center items-center h-8 w-8 ml-auto m-0 relative z-20"
                             data-expanded="false" onClick={() => {
                         setMenuOpen(prevState => !prevState);
                     }}>
                         <div
-                            className={`bg-gray-500 h-1.5px w-4 m-1 absolute transition-all ${!menuOpen && 'top-1.5'} ${menuOpen && 'rotate-45 top-2.5'} `}
+                            className={`bg-gray-500 h-0.5 rounded-full w-4 m-1 absolute transition-all ${!menuOpen && 'top-1.5'} ${menuOpen && 'rotate-45 top-3'} `}
                             data-position="top"></div>
                         <div
-                            className={`bg-gray-500 h-1.5px w-4 m-1 absolute transition-all ${!menuOpen && 'bottom-1.5'} ${menuOpen && '-rotate-45 top-2.5'} `}
+                            className={`bg-gray-500 h-0.5 rounded-full w-4 m-1 absolute transition-all ${!menuOpen && 'bottom-1.5'} ${menuOpen && '-rotate-45 top-3'} `}
                             data-position="bottom"></div>
                     </button>
                 </>
@@ -50,15 +50,17 @@ export default function Header(){
                     </ul>
                 </>
             }
-            {menuOpen && isMobile &&
-                <motion.div aria-label={'mobileMenu'} initial={{ transform: "scaleY(0)", opacity: 0 }} animate={{ transform: "scaleY(1)", opacity: 1 }} transition={{ type: "spring", duration: 0.5 }} style={{ transformOrigin: "top", height: `calc(100dvh - 65px)` }}
-                     className={'fixed left-0 bg-gray-100 flex-grow w-full m-menu p-4 box-border bottom-0'}>
-                    <ul>
-                        <li className={'m-7 ml-3 text-4xl font-bold'}><a href={'/'}>總覽</a></li>
-                        <li className={'m-7 ml-3 text-4xl font-bold'}><a href={'/join-beta'}>加入測試版</a></li>
-                    </ul>
-                </motion.div>
-            }
+            <AnimatePresence>
+                {menuOpen && isMobile &&
+                    <motion.div aria-label={'mobileMenu'} initial={{ opacity: 0, height: 0 }} exit={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "100dvh" }} transition={{ type: "spring", stiffness: 150, damping: 20 }} style={{ transformOrigin: "top" }}
+                         className={'fixed left-0 bg-gray-100/85 flex-grow w-full m-menu p-4 box-border top-0 z-10 backdrop-blur overflow-auto'}>
+                        <ul className={'mt-8'}>
+                            <motion.li className={'m-7 ml-3 text-4xl font-bold'} initial={{ opacity: 0, y: 30 }} exit={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y:0 }} transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.1, exit: { delay: 0 }}}><a href={'/'}>總覽</a></motion.li>
+                            <motion.li className={'m-7 ml-3 text-4xl font-bold'} initial={{ opacity: 0, y: 30 }} exit={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y:0 }} transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2, exit: { delay: 0 }}}><a href={'/join-beta'}>加入測試版</a></motion.li>
+                        </ul>
+                    </motion.div>
+                }
+            </AnimatePresence>
         </header>
     )
 }
