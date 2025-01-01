@@ -14,15 +14,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="zh-TW">
-            <body className='antialiased'>
+            <body className='antialiased min-h-dvh flex flex-col'>
                 <NextUIProvider>
                     <div className={`w-full flex flex-col`}>
                         <Header />
                         {children}
                     </div>
                 </NextUIProvider>
-                <footer className='flex items-center justify-center m-4'>
-                    <p className={'text-gray-800 text-sm font-sans'}>Copyright © 2025 LYCA 保留一切權利。</p>
+                <footer className='flex items-end justify-center m-4 flex-grow'>
+                    <p className={'text-gray-800 text-sm font-sans'}>Copyright © 2025 LYHS+ 保留一切權利。</p>
                 </footer>
             </body>
         </html>

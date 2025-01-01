@@ -50,7 +50,7 @@ export default function Header(){
                     </ul>
                 </>
             }
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {menuOpen && isMobile &&
                     <motion.div aria-label={'mobileMenu'} initial={{ opacity: 0.2, height: 0 }} exit={{ opacity: 0.2, height: 0 }} animate={{ opacity: 1, height: "100dvh" }} transition={{ type: "spring", stiffness: 170, damping: 20 }} style={{ transformOrigin: "top" }}
                          className={'fixed left-0 bg-gray-100/85 flex-grow w-full m-menu p-4 box-border top-0 z-10 backdrop-blur overflow-auto'}>

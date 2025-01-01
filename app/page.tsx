@@ -36,7 +36,7 @@ export default function Home() {
                 </svg>
                 <div className={'m-1 ml-3 flex xs:flex-col md:flex-row justify-center md:items-center xs:items-start flex-grow'}>
                     <p className={'font-bold'}>我們預計2025年寒假釋出測試版。</p>
-                    <Link href={'/join-beta'} className={'bg-black text-white p-2 pl-3 pr-3 xs:mt-2 md:mt-0 text-sm font-bold flex items-center fill-white justify-center md:ml-auto xs:ml-0 hover:opacity-70'}>
+                    <Link href={'/join-beta'} className={'bg-black text-white p-2 rounded-md pl-3 pr-3 xs:mt-2 md:mt-0 text-sm font-bold flex items-center fill-white justify-center md:ml-auto xs:ml-0 hover:opacity-70'}>
                         加入測試版等待名單
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                              viewBox="0 0 64 64" className={'ml-2'}>
