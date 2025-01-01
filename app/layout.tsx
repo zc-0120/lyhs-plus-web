@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="zh-TW">
-            <body className='antialiased min-h-dvh flex flex-col'>
+            <body className='antialiased min-h-dvh flex flex-col overflow-x-hidden'>
                 <NextUIProvider>
                     <div className={`w-full flex flex-col`}>
                         <Header />
