@@ -12,3 +12,10 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  .no-safari-focus {
+    @apply focus:outline-none focus:ring-0;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

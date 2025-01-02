@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {CircularProgress} from "@nextui-org/react";
 import { apiService } from "@/service/api";
+import { Dot } from "@/components/Dot";
 
 export default function JoinBeta() {
     const [email, setEmail] = useState<string>('');
@@ -19,14 +20,14 @@ export default function JoinBeta() {
 
     const tabContent = [
         {
-            title: "你的名字是？",
+            title: "歡迎！你的名字是？",
             input: (
                 <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="點擊這裡開始輸入"
-                    className={'mt-4 text-xl focus:outline-0 pt-1 pb-2 w-full'}
+                    className={'mt-4 text-xl focus:outline-0 pt-1 pb-2 w-full no-safari-focus bg-transparent'}
                 />
             )
         },
@@ -46,7 +47,7 @@ export default function JoinBeta() {
                             }
                         }}
                         placeholder="點擊這裡開始輸入"
-                        className={'mt-4 text-xl focus:outline-0 pt-1 pb-2 w-full'}
+                        className={'mt-4 text-xl focus:outline-none pt-1 pb-2 w-full outline-0 no-safari-focus bg-transparent'}
                     />
                     {emailError && (
                         <p className="text-red-500 text-sm mt-2">{emailError}</p>
@@ -95,38 +96,41 @@ export default function JoinBeta() {
     }
 
     return (
-        <div className={'p-6'}>
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={tab}
-                    initial={{ x: 40, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -40, opacity: 0 }}
-                    transition={{ type: "spring", duration: 1 }}
-                >
-                    <h1 className={'font-bold text-4xl'}>{tabContent[tab]?.title}</h1>
-                    {tabContent[tab].subtitle &&
-                        <p className={'mt-2'}>{tabContent[tab].subtitle}</p>
-                    }
-                    {tabContent[tab]?.input}
-                </motion.div>
-            </AnimatePresence>
-            {tab != 2 &&
-                <button
-                    onClick={() => handleButtonAction(tab)}
-                    disabled={handleButtonDisabled(tab)}
-                    className={`px-4 py-2 absolute bottom-20 right-10 ${
-                        handleButtonDisabled(tab) ? 'bg-gray-200 text-gray-400 border-2 border-gray-200 cursor-not-allowed' : 'bg-white text-black border-2 border-black hover:bg-gray-200 shadow-sharp'
-                    } rounded-xl font-sans font-medium`}
-                >
-                    下一步
-                </button>
-            }
-            {loading &&
-                <motion.div className={'fixed h-dvh w-full flex backdrop-blur bg-gray-200/50 top-0 left-0 justify-center items-center'}>
-                    <CircularProgress />
-                </motion.div>
-            }
-        </div>
+        <>
+            <div className={'p-6 sm:px-16 z-10'}>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={tab}
+                        initial={{ x: 40, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: -40, opacity: 0 }}
+                        transition={{ type: "spring", duration: 1 }}
+                    >
+                        <h1 className={'font-bold text-4xl'}>{tabContent[tab]?.title}</h1>
+                        {tabContent[tab].subtitle &&
+                            <p className={'mt-2'}>{tabContent[tab].subtitle}</p>
+                        }
+                        {tabContent[tab]?.input}
+                    </motion.div>
+                </AnimatePresence>
+                {tab != 2 &&
+                    <button
+                        onClick={() => handleButtonAction(tab)}
+                        disabled={handleButtonDisabled(tab)}
+                        className={`px-4 py-2 absolute bottom-20 right-10 ${
+                            handleButtonDisabled(tab) ? 'bg-gray-200 text-gray-400 border-2 border-gray-200 cursor-not-allowed' : 'bg-white text-black border-2 border-black hover:bg-gray-200 shadow-sharp'
+                        } rounded-xl font-sans font-medium`}
+                    >
+                        下一步
+                    </button>
+                }
+                {loading &&
+                    <motion.div className={'fixed h-dvh w-full flex backdrop-blur bg-gray-200/50 top-0 left-0 justify-center items-center'}>
+                        <CircularProgress />
+                    </motion.div>
+                }
+            </div>
+            <Dot gradient={false} className={'fixed w-full z-0 h-dvh top-5'} />
+        </>
     );
 }
