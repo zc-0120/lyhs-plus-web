@@ -1,12 +1,15 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {CircularProgress} from "@nextui-org/react";
+import { apiService } from "@/service/api";
 
 export default function JoinBeta() {
     const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [tab, setTab] = useState<number>(0);
     const [emailError, setEmailError] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
     // 驗證 email 的函數
     const validateEmail = (email: string): boolean => {
@@ -57,7 +60,7 @@ export default function JoinBeta() {
         }
     ];
 
-    const handleButton = (tab: number) => {
+    const handleButtonDisabled = (tab: number) => {
         switch (tab) {
             case 0:
                 return name === '';
@@ -65,6 +68,29 @@ export default function JoinBeta() {
                 return email === '' || !validateEmail(email);
             default:
                 return false;
+        }
+    }
+
+    const formSubmit = async () => {
+        try {
+            setLoading(true);
+            await apiService.addNewUser( name, email );
+            console.log('加入成功')
+            setLoading(false);
+            setTab(tab + 1);
+        } catch (e) {
+            console.error('加入失敗', e);
+        }
+    }
+
+    const handleButtonAction = (tab: number) => {
+        switch (tab) {
+            case 0:
+                return setTab(tab + 1)
+            case 1:
+                return formSubmit()
+            default:
+                return setTab(tab + 1);
         }
     }
 
@@ -87,14 +113,19 @@ export default function JoinBeta() {
             </AnimatePresence>
             {tab != 2 &&
                 <button
-                    onClick={() => setTab(tab + 1)}
-                    disabled={handleButton(tab)}
+                    onClick={() => handleButtonAction(tab)}
+                    disabled={handleButtonDisabled(tab)}
                     className={`px-4 py-2 absolute bottom-20 right-10 ${
-                        handleButton(tab) ? 'bg-gray-200 text-gray-400 border-2 border-gray-200 cursor-not-allowed' : 'bg-white text-black border-2 border-black hover:bg-gray-200 shadow-sharp'
+                        handleButtonDisabled(tab) ? 'bg-gray-200 text-gray-400 border-2 border-gray-200 cursor-not-allowed' : 'bg-white text-black border-2 border-black hover:bg-gray-200 shadow-sharp'
                     } rounded-xl font-sans font-medium`}
                 >
                     下一步
                 </button>
+            }
+            {loading &&
+                <motion.div className={'fixed h-dvh w-full flex backdrop-blur bg-gray-200/50 top-0 left-0 justify-center items-center'}>
+                    <CircularProgress />
+                </motion.div>
             }
         </div>
     );
