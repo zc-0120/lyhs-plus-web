@@ -25,7 +25,7 @@ export default function Header(){
 
     return (
         <header className='flex flex-row bg-white items-center sticky p-4 pl-7 pr-7 z-20 top-0'>
-            <Link href={'/'}><Image src='/text-logo.svg' width={70} height={100} alt='lyhs-plus-text-icon'/></Link>
+            <Link href={'/'}><Image src='/text-logo.svg' width={80} height={120} alt='lyhs-plus-text-icon'/></Link>
             {isMobile ?
                 <>
                     <button aria-label="Open menu"
