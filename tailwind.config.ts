@@ -14,6 +14,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        mainBlue: '#1E9BDE',
       },
       height: {
         '1.5px': '1.5px',
@@ -23,9 +24,6 @@ export default {
       },
       screens: {
         'xs': '100px',
-      },
-      colors: {
-        mainBlue: '#1E9BDE',
       },
     },
   },
