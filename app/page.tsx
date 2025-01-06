@@ -9,10 +9,18 @@ export default function Home() {
         <main>
             <div className='m-4 p-2 mt-0 box-border bg-gray-100 rounded-2xl flex flex-col justify-center items-center overflow-hidden' style={{height: `calc(100dvh - 85px)`}}>
                 <Dot gradient={false} className={'absolute w-11/12 z-0 h-5/6'} />
-                <p className={'text-xl z-10 font-bold text-blue-500'}>專為林園高中設計</p>
-                <h1 className='sm:text-6xl font-bold text-center z-10 m-5 xs:text-5xl xs:leading-normal'>正因為用心，所以獨特。</h1>
+                <Image src={"./logo.svg"} alt={'lyhs-plus-logo'} width={40} height={40} className={'z-10 mb-2'} />
+                <p className={'text-xl z-10 font-bold text-mainBlue'}>專為林園高中設計</p>
+                <h1 className='sm:text-6xl font-bold text-center z-10 m-5 xs:text-5xl xs:leading-normal'>林聚資訊，園你所需</h1>
                 <Link href={'/join-beta'}
-                      className='p-3 pl-5 pr-5 z-10 font-medium bg-white text-black rounded-full border-2 flex m-5 hover:bg-gray-200 border-black transition-all shadow-sharp'>搶先加入測試版</Link>
+                      className='p-3 pl-5 pr-5 z-10 font-medium bg-white text-black rounded-full border-2 flex m-5 hover:bg-gray-200 border-black transition-all shadow-sharp items-center group'>
+                    搶先加入測試版
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
+                         viewBox="0 0 64 64" className={'m-1 group-hover:ml-3 transition-all'}>
+                        <path
+                            d="M 37.546875 15.041016 C 37.034875 15.032766 36.520047 15.219516 36.123047 15.603516 C 35.330047 16.371516 35.309125 17.638641 36.078125 18.431641 L 47.279297 30 L 12 30 C 10.896 30 10 30.896 10 32 C 10 33.104 10.896 34 12 34 L 47.279297 34 L 36.078125 45.568359 C 35.310125 46.361359 35.330047 47.627484 36.123047 48.396484 C 36.512047 48.772484 37.014625 48.960938 37.515625 48.960938 C 38.037625 48.960938 38.560172 48.757562 38.951172 48.351562 L 53.435547 33.390625 C 54.186547 32.615625 54.186547 31.384375 53.435547 30.609375 L 38.951172 15.648438 C 38.568172 15.251437 38.058875 15.049266 37.546875 15.041016 z"></path>
+                    </svg>
+                </Link>
                 <div className={'absolute bottom-10 text-gray-400'}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill={'none'} viewBox="0 0 26 8"
                          strokeWidth="2.5">

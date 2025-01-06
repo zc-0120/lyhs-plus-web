@@ -22,7 +22,10 @@ export default {
         'sharp': '3px 3px 0px rgba(0, 0, 0, 0.5)', // 自定义阴影，模糊值为0
       },
       screens: {
-        'xs': '380px',
+        'xs': '100px',
+      },
+      colors: {
+        mainBlue: '#1E9BDE',
       },
     },
   },
