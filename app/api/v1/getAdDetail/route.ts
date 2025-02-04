@@ -42,14 +42,9 @@ export async function GET(req: Request) {
   const url = decodeURIComponent(encodedUrl);
   const html = await fetch(url).then((res) => res.text());
   const result = parseAnnouncement(html);
-  return NextResponse.json({ data: result });
-}
-
-export async function OPTIONS() {
-  const response = new NextResponse(null, { status: 204 });
+  const response = NextResponse.json({ data: result });
   response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
   response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-
   return response;
 }
