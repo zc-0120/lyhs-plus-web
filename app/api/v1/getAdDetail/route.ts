@@ -44,3 +44,12 @@ export async function GET(req: Request) {
   const result = parseAnnouncement(html);
   return NextResponse.json({ data: result });
 }
+
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 });
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+  return response;
+}
