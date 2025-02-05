@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family:
+        OpenAI Sans,
+        Inter,
+        sans-serif;
+}
+
+@layer utilities {
+    .no-safari-focus {
+        @apply focus:outline-none focus:ring-0;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+@font-face {
+    font-family: "OpenAI Sans";
+    src:
+        url("/fonts/OpenAISans-Regular.woff2") format("woff2"),
+        url("/fonts/OpenAISans-Medium.woff2") format("woff2");
+    font-weight: 400 500;
+    font-style: normal;
+}

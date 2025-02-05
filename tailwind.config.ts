@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
-import {nextui} from '@nextui-org/theme';
-import plugin from 'tailwindcss/plugin';
+import { nextui } from "@nextui-org/theme";
+import plugin from "tailwindcss/plugin";
 
 export default {
   content: [
@@ -11,23 +11,24 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        custom: ["OpenAI Sans", "sans-serif"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        mainBlue: '#1E9BDE',
+        mainBlue: "#1E9BDE",
       },
       height: {
-        '1.5px': '1.5px',
+        "1.5px": "1.5px",
       },
       boxShadow: {
-        'sharp': '3px 3px 0px rgba(0, 0, 0, 0.5)', // 自定义阴影，模糊值为0
+        sharp: "3px 3px 0px rgba(0, 0, 0, 0.5)", // 自定义阴影，模糊值为0
       },
       screens: {
-        'xs': '100px',
+        xs: "100px",
       },
     },
   },
-  plugins: [
-    nextui()
-  ],
+  plugins: [nextui()],
 } satisfies Config;
