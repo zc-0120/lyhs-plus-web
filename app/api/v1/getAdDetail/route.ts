@@ -5,10 +5,11 @@ function parseAnnouncement(html: string) {
   const $ = cheerio.load(html);
 
   const title = $(".ContentTitle").first().text().trim();
+
   const content = $(".ContentBody p")
-    .map((_, el) => $(el).text().trim())
+    .map((_, el) => $(el).html()?.trim() || "")
     .get()
-    .filter((text) => text.length > 0);
+    .filter((html) => html.length > 0);
 
   const attachments = $(".ContentAttach a")
     .map((_, el) => ({
