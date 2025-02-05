@@ -1,5 +1,5 @@
 import { useSprings, animated, SpringConfig } from "@react-spring/web";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, CSSProperties } from "react";
 
 interface SplitTextProps {
   text?: string;
@@ -13,6 +13,9 @@ interface SplitTextProps {
   textAlign?: "left" | "right" | "center" | "justify" | "start" | "end";
   onLetterAnimationComplete?: () => void;
 }
+
+// 定義animated.span的類型
+const AnimatedSpan = animated("span" as any);
 
 const SplitText: React.FC<SplitTextProps> = ({
   text = "",
@@ -90,13 +93,13 @@ const SplitText: React.FC<SplitTextProps> = ({
               letterIndex;
 
             return (
-              <animated.span
+              <AnimatedSpan
                 key={index}
-                style={springs[index] as unknown as React.CSSProperties}
+                style={springs[index]}
                 className="inline-block transform transition-opacity will-change-transform"
               >
                 {letter}
-              </animated.span>
+              </AnimatedSpan>
             );
           })}
           <span style={{ display: "inline-block", width: "0.3em" }}>
