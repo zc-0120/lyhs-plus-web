@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/theme";
-import plugin from "tailwindcss/plugin";
 
 export default {
   content: [
