@@ -1,10 +1,9 @@
-"use client";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import LetterGlitch from "@/components/ui/LetterGlitch";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <div
