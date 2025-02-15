@@ -10,6 +10,7 @@ interface FileObject {
   updated_at: string;
   last_accessed_at: string;
   metadata: Record<string, any>;
+  previewUrl?: string;
 }
 
 export default function Page() {
@@ -33,7 +34,18 @@ export default function Page() {
       if (error) {
         console.error("Error fetching files:", error);
       } else {
-        setFiles(data);
+        const filesWithPreviews = await Promise.all(
+          data.map(async (file) => {
+            const { data } = supabase.storage
+              .from("english")
+              .getPublicUrl(`b4/three/${file.name}`);
+            if (error) {
+              console.error("Error generating public URL:", error);
+            }
+            return { ...file, previewUrl: data.publicUrl };
+          }),
+        );
+        setFiles(filesWithPreviews);
       }
       setLoading(false);
     };
@@ -62,7 +74,6 @@ export default function Page() {
     e.preventDefault();
     if (passcode === "657389") setLock(false);
   };
-
   return (
     <>
       <div className="bg-white fixed top-0 w-full min-h-dvh z-50 flex flex-col justify-center items-center overflow-y-auto">
@@ -98,12 +109,21 @@ export default function Page() {
                     className="py-2 flex justify-between items-center"
                   >
                     {file.name}
-                    <button
-                      onClick={() => downloadFile(file)}
-                      className="border-b border-zinc-200 py-1 hover:bg-zinc-100"
-                    >
-                      下載
-                    </button>
+                    <div className="flex gap-2">
+                      <a
+                        href={file.previewUrl}
+                        className="border-b border-zinc-200 py-1 hover:bg-zinc-100 cursor-pointer"
+                        target="_blank"
+                      >
+                        預覽
+                      </a>
+                      <button
+                        onClick={() => downloadFile(file)}
+                        className="border-b border-zinc-200 py-1 hover:bg-zinc-100"
+                      >
+                        下載
+                      </button>
+                    </div>
                   </li>
                 ))}
               </ul>
