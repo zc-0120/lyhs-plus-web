@@ -36,6 +36,7 @@ function parseAnnouncement(html: string) {
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
+  console.log(searchParams);
   const encodedUrl = searchParams.get("url");
   if (!encodedUrl) {
     return NextResponse.json({ error: "url is required" }, { status: 400 });
