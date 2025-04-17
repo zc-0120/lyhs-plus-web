@@ -36,11 +36,11 @@ function parseAnnouncement(html: string) {
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  console.log(searchParams);
   const encodedUrl = searchParams.get("url");
   if (!encodedUrl) {
     return NextResponse.json({ error: "url is required" }, { status: 400 });
   }
+  console.log(encodedUrl);
   const url = decodeURIComponent(encodedUrl);
   const html = await fetch(url).then((res) => res.text());
   const result = parseAnnouncement(html);
