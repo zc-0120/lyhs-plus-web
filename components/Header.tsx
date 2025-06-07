@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className="w-full flex items-center justify-center relative">
       <header
-        className={`flex w-full p-5 px-6 bg-white/80 fixed top-0 z-10 backdrop-blur-lg justify-between items-center`}
+        className={`flex w-full p-3 px-6 bg-white/80 fixed top-0 z-10 backdrop-blur-lg justify-between items-center md:px-52 sm:px-12`}
       >
         <Link href={"/"}>
           <Image
@@ -16,11 +16,12 @@ export default function Header() {
             alt="lyhs-plus-text-icon"
           />
         </Link>
-        {/*
-        <button className="bg-zinc-100 rounded-2xl p-2 flex items-center justify-center">
-          <Menu strokeWidth={2.5} size={20} className="text-zinc-500"></Menu>
-        </button>
-        */}
+        <Link
+          href={"/"}
+          className="bg-mainBlue text-white rounded-full text-sm font-medium p-2 px-3 flex items-center justify-center"
+        >
+          前往體驗
+        </Link>
       </header>
     </div>
   );
