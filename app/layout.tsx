@@ -23,7 +23,7 @@ export default function RootLayout({
         </NextUIProvider>
         <footer className="flex items-end justify-center m-4 flex-grow">
           <p className={"text-gray-800 text-sm font-custom"}>
-            LYCA © 2024–2025
+            LYHS Plus © 2024–2025
           </p>
         </footer>
       </body>
