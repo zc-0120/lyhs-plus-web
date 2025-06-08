@@ -64,8 +64,8 @@ export default function Home() {
           duration: 2,
           scrollTrigger: {
             trigger: ".text-2",
-            start: "top 80%",
-            end: "top 20%",
+            start: "top 30%",
+            end: "top 0%",
             scrub: 1,
           },
         },
@@ -145,7 +145,8 @@ export default function Home() {
             <div className="bg-zinc-100 p-5 flex max-sm:flex-col gap-2 rounded-3xl md:rounded-[30px] max-sm:justify-center max-sm:items-start justify-between items-center w-full">
               <p className="text-xl font-medium">測試版現在已正式發佈</p>
               <Link
-                href={"/"}
+                href={"https://app.lyhsca.org"}
+                target="_blank"
                 className="bg-mainBlue text-white p-2 px-3 font-medium rounded-xl"
               >
                 前往使用

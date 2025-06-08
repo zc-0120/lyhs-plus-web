@@ -17,7 +17,8 @@ export default function Header() {
           />
         </Link>
         <Link
-          href={"/"}
+          href={"https://app.lyhsca.org"}
+          target="_blank"
           className="bg-mainBlue text-white rounded-full text-sm font-medium p-2 px-3 flex items-center justify-center"
         >
           前往體驗
