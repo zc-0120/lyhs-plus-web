@@ -6,7 +6,7 @@ function parseAnnouncement(html: string) {
 
   const title = $(".ContentTitle").first().text().trim();
 
-  const content = $(".ContentBody p")
+  const content = $(".ContentBody")
     .map((_, el) => $(el).html()?.trim() || "")
     .get()
     .filter((html) => html.length > 0);
